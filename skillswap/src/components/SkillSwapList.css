@@ -1,0 +1,26 @@
+.swap-list {
+    margin: 30px;
+    font-family: Calibri, serif;
+    color: #ff6f91;
+}
+
+.list-title {
+    margin-left: 30px;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.list-empty-text {
+    font-size: 24px;
+    font-weight: 300;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    border: 0;
+    height: 1px;
+    background-color: #ff6f91;
+    margin: 30px 10% 0 10%;
+}
