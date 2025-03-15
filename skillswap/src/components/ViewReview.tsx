@@ -10,12 +10,19 @@ interface ReviewFormProps {
 
 const ViewReview: React.FC<ReviewFormProps> = ({swap, onClose, deleteReview}) => {
     return (
-        <div>
+        <div className="modal-content">
             <h3>Your Review</h3>
-            <RatingComponent rating={swap.rating} setRating={() => {}}/>
-            {swap.ratingDescription}
-            <button type="button" onClick={onClose}>Close</button>
-            <button type="button" onClick={deleteReview}>Delete Review</button>
+            <div className="stars">
+                <RatingComponent rating={swap.rating} setRating={() => {
+                }}/>
+            </div>
+            <div className="desc">
+                {swap.ratingDescription}
+            </div>
+            <div className="buttons">
+                <button type="button" onClick={onClose}>Close</button>
+                <button type="button" onClick={deleteReview}>Delete Review</button>
+            </div>
         </div>
     );
 };

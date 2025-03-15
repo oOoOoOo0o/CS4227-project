@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {submitReview} from "../services/api";
 import RatingComponent from "./RatingComponent.tsx";
 import {ReviewData} from "../types/ReviewData.tsx";
+import "./Modal.css"
 
 interface ReviewFormProps {
     swapId: number;
@@ -33,16 +34,22 @@ const ReviewForm: React.FC<ReviewFormProps> = ({swapId, onSubmitReview, onClose}
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="modal-content" onSubmit={handleSubmit}>
             <h3>Leave a Review</h3>
-            <RatingComponent rating={rating} setRating={setRating}/>
-            <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Write a review!"
-            />
-            <button type="submit">Submit Review</button>
-            <button type="button" onClick={onClose}>Cancel</button>
+            <div className="stars">
+                <RatingComponent rating={rating} setRating={setRating}/>
+            </div>
+            <div className="desc">
+                <textarea
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Write a review!"
+                />
+            </div>
+            <div className="buttons">
+                <button type="submit">Submit Review</button>
+                <button type="button" onClick={onClose}>Cancel</button>
+            </div>
         </form>
     );
 };
