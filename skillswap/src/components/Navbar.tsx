@@ -8,13 +8,14 @@ import {
     List,
     ListItem,
     ListItemIcon,
-    ListItemText
+    ListItemText,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import SettingsIcon from '@mui/icons-material/Settings';
+import {ImportContacts} from "@mui/icons-material";
 
 export default function Navbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -29,7 +30,7 @@ export default function Navbar() {
 
     return (
         <>
-            <AppBar sx={{bgcolor: '#f7232a'}}>
+            <AppBar sx={{bgcolor: '#f7535a'}}>
                 <Toolbar style={{display: 'flex', justifyContent: 'space-between'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <IconButton edge="start" aria-label="menu" style={{marginRight: '10px'}}
@@ -37,7 +38,7 @@ export default function Navbar() {
                             <MenuIcon/>
                         </IconButton>
                         <Typography fontWeight="bold" variant="h6" style={{color: 'black'}}>
-                            User Management
+                            Your Skill Swaps
                         </Typography>
                     </div>
                     <Typography fontWeight="bold" variant="h6" style={{color: 'black'}}>
@@ -50,9 +51,9 @@ export default function Navbar() {
                 anchor="left"
                 open={drawerOpen}
                 onClose={handleDrawerClose}
-                sx={{'& .MuiDrawer-paper': {backgroundColor: '#f7232a'}}}
+                sx={{'& .MuiDrawer-paper': {backgroundColor: '#f7535a'}}}
             >
-                <List style={{backgroundColor: '#f7232a'}}>
+                <List style={{backgroundColor: '#f7535a'}}>
                     <ListItem onClick={handleDrawerClose}>
                         <ListItemIcon>
                             <HomeIcon/>
@@ -64,6 +65,12 @@ export default function Navbar() {
                             <AccountCircleIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Profile"/>
+                    </ListItem>
+                    <ListItem onClick={handleDrawerClose}>
+                        <ListItemIcon>
+                            <ImportContacts/>
+                        </ListItemIcon>
+                        <ListItemText primary="Your Skill Swaps"/>
                     </ListItem>
                     <ListItem onClick={handleDrawerClose}>
                         <ListItemIcon>
