@@ -1,16 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {setSkillSwaps, updateSkillSwapStatus, removeSkillSwap} from "../redux/actions.tsx";
 import SkillSwapItem from "./SkillSwapItem";
 import {getSkillSwaps, cancelSwap, markSwapComplete, acceptSwap} from "../services/api";
-import {SkillSwap} from "../types/SkillSwap.tsx";
 import "./SkillSwapList.css"
+import {RootState} from "../types/ReduxState.tsx";
 
 const SkillSwapList: React.FC = () => {
-    const [skillSwaps, setSkillSwaps] = useState<SkillSwap[]>([]);
+    const dispatch = useDispatch();
+    const skillSwaps = useSelector((state: RootState) => state.skillSwaps.skillSwaps);
 
     // Fetching skill swaps from the backend
     useEffect(() => {
         getSkillSwaps().then((data) => {
-            setSkillSwaps(data);
+            dispatch(setSkillSwaps(data));
         });
     }, []);
 
@@ -20,29 +23,21 @@ const SkillSwapList: React.FC = () => {
     const completedSwaps = skillSwaps.filter((swap) => swap.status === "completed");
 
     const handleAcceptRequest = (swapId: number) => {
-        setSkillSwaps(prevSwaps =>
-            prevSwaps.map(swap =>
-                swap.id === swapId ? {...swap, status: 'ongoing'} : swap
-            )
-        );
+        dispatch(updateSkillSwapStatus(swapId, "ongoing"));
         acceptSwap(swapId).catch((error) => {
             console.error("Error accepting swap:", error);
         });
     };
 
     const handleCancelSwap = (swapId: number) => {
-        setSkillSwaps(prevSwaps => prevSwaps.filter(swap => swap.id !== swapId));
+        dispatch(removeSkillSwap(swapId));
         cancelSwap(swapId).catch((error) => {
             console.error("Error cancelling swap:", error);
         });
     };
 
     const handleMarkComplete = (swapId: number) => {
-        setSkillSwaps(prevSwaps =>
-            prevSwaps.map(swap =>
-                swap.id === swapId ? {...swap, status: 'completed'} : swap
-            )
-        );
+        dispatch(updateSkillSwapStatus(swapId, "completed"));
         markSwapComplete(swapId).catch((error) => {
             console.error("Error marking swap complete:", error);
         });
