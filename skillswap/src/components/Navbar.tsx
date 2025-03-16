@@ -29,6 +29,14 @@ export default function Navbar() {
         setDrawerOpen(false);
     };
 
+    function getTitle(): string {
+        if (location.pathname === '/CS4227-project/swaps') {
+            return "Your Skill Swaps";
+        } else {
+            return "Home";
+        }
+    }
+
     return (
         <>
             <AppBar sx={{bgcolor: '#f7535a'}}>
@@ -39,7 +47,7 @@ export default function Navbar() {
                             <MenuIcon/>
                         </IconButton>
                         <Typography fontWeight="bold" variant="h6" style={{color: 'black'}}>
-                            Your Skill Swaps
+                            {getTitle()}
                         </Typography>
                     </div>
                     <Link to="/CS4227-project/home" style={{textDecoration: 'none', color: 'black'}}>
