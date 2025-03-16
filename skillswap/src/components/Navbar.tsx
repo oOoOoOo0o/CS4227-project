@@ -16,6 +16,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import SettingsIcon from '@mui/icons-material/Settings';
 import {ImportContacts} from "@mui/icons-material";
+import {Link} from "react-router-dom";
 
 export default function Navbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -41,9 +42,11 @@ export default function Navbar() {
                             Your Skill Swaps
                         </Typography>
                     </div>
-                    <Typography fontWeight="bold" variant="h6" style={{color: 'black'}}>
-                        Skill Swap
-                    </Typography>
+                    <Link to="/CS4227-project/home" style={{textDecoration: 'none', color: 'black'}}>
+                        <Typography fontWeight="bold" variant="h6" style={{color: 'black'}}>
+                            Skill Swap
+                        </Typography>
+                    </Link>
                 </Toolbar>
             </AppBar>
 
@@ -54,36 +57,81 @@ export default function Navbar() {
                 sx={{'& .MuiDrawer-paper': {backgroundColor: '#f7535a'}}}
             >
                 <List style={{backgroundColor: '#f7535a'}}>
-                    <ListItem onClick={handleDrawerClose}>
-                        <ListItemIcon>
-                            <HomeIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Home"/>
-                    </ListItem>
-                    <ListItem onClick={handleDrawerClose}>
-                        <ListItemIcon>
-                            <AccountCircleIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Profile"/>
-                    </ListItem>
-                    <ListItem onClick={handleDrawerClose}>
-                        <ListItemIcon>
-                            <ImportContacts/>
-                        </ListItemIcon>
-                        <ListItemText primary="Your Skill Swaps"/>
-                    </ListItem>
-                    <ListItem onClick={handleDrawerClose}>
-                        <ListItemIcon>
-                            <NotificationsIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Notifications"/>
-                    </ListItem>
-                    <ListItem onClick={handleDrawerClose}>
-                        <ListItemIcon>
-                            <SettingsIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Settings"/>
-                    </ListItem>
+                    {/* Home Page */}
+                    <Link to="/CS4227-project/home" style={{textDecoration: 'none', color: 'black'}}>
+                        <ListItem onClick={handleDrawerClose}
+                                  sx={{
+                                      '&:hover': {
+                                          backgroundColor: '#e13d4e',
+                                          transition: 'background-color 0.5s ease',
+                                      },
+                                  }}>
+                            <ListItemIcon>
+                                <HomeIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Home"/>
+                        </ListItem>
+                    </Link>
+                    {/* Profile Page */}
+                    <Link to="/CS4227-project" style={{textDecoration: 'none', color: 'black'}}>
+                        <ListItem onClick={handleDrawerClose}
+                                  sx={{
+                                      '&:hover': {
+                                          backgroundColor: '#e13d4e',
+                                          transition: 'background-color 0.5s ease',
+                                      },
+                                  }}>
+                            <ListItemIcon>
+                                <AccountCircleIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Profile"/>
+                        </ListItem>
+                    </Link>
+                    {/* Skill Swaps Page */}
+                    <Link to="/CS4227-project/swaps" style={{textDecoration: 'none', color: 'black'}}>
+                        <ListItem onClick={handleDrawerClose}
+                                  sx={{
+                                      '&:hover': {
+                                          backgroundColor: '#e13d4e',
+                                          transition: 'background-color 0.5s ease',
+                                      },
+                                  }}>
+                            <ListItemIcon>
+                                <ImportContacts/>
+                            </ListItemIcon>
+                            <ListItemText primary="Your Skill Swaps"/>
+                        </ListItem>
+                    </Link>
+                    {/* Notifications Page */}
+                    <Link to="/CS4227-project" style={{textDecoration: 'none', color: 'black'}}>
+                        <ListItem onClick={handleDrawerClose}
+                                  sx={{
+                                      '&:hover': {
+                                          backgroundColor: '#e13d4e',
+                                          transition: 'background-color 0.5s ease',
+                                      },
+                                  }}>
+                            <ListItemIcon>
+                                <NotificationsIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Notifications"/>
+                        </ListItem>
+                    </Link>
+                    {/* Settings Page */}
+                    <Link to="/CS4227-project" style={{textDecoration: 'none', color: 'black'}}>
+                        <ListItem onClick={handleDrawerClose}
+                                  sx={{
+                                      '&:hover': {
+                                          backgroundColor: '#e13d4e',
+                                          transition: 'background-color 0.5s ease',
+                                      },
+                                  }}>
+                            <ListItemIcon>
+                                <SettingsIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Settings"/>
+                        </ListItem>
+                    </Link>
                 </List>
             </Drawer>
         </>
